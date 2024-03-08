@@ -27,12 +27,12 @@ jobs:
 
     - name: Build and push mysql image to Amazon ECR
       run: |
-        cd clo835-a2/
+        
         docker build -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_MYSQL }}:${{ env.IMAGE_TAG }} -f Dockerfile_mysql .
         docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_MYSQL }}:${{ env.IMAGE_TAG }}
         
     - name: Build, tag, and push app image to Amazon ECR
       run: |
-        cd assignment2/
+        
         docker build -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_APP }}:${{ env.IMAGE_TAG }} -f Dockerfile .
         docker push ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY_APP }}:${{ env.IMAGE_TAG }}
